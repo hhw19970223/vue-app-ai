@@ -5,6 +5,10 @@ import { router } from './router';
 import { createPinia } from 'pinia'
 import Layout from '@/layout/index.vue';
 
+// import '@/style/base.less';
+import '@/style/mixin.less';
+import '@/style/theme.css';
+
 export const app = createApp(App);
 
 app.config.globalProperties.$filters = {

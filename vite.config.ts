@@ -1,9 +1,11 @@
 import { defineConfig } from "vite";
 import path from "path";
 import vue from "@vitejs/plugin-vue";
-import Components from 'unplugin-vue-components/vite'
-import { AntDesignVueResolver, VantResolver } from 'unplugin-vue-components/resolvers'
-import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite';
+import { AntDesignVueResolver, VantResolver } from 'unplugin-vue-components/resolvers';
+import AutoImport from 'unplugin-auto-import/vite';
+import autoprefixer from 'autoprefixer';
+import tailwindcss from 'tailwindcss';
 // import mkcert from "vite-plugin-mkcert";
 
 // https://vitejs.dev/config/
@@ -67,6 +69,15 @@ export default defineConfig({
   build: {
     assetsDir: "./assets",
     outDir: "./hhw_static",
+  },
+
+  css: {
+    postcss: {
+      plugins: [
+        tailwindcss, 
+        autoprefixer,
+      ]
+    }
   },
 
   optimizeDeps: {},
