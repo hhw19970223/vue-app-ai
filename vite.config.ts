@@ -1,11 +1,35 @@
 import { defineConfig } from "vite";
 import path from "path";
 import vue from "@vitejs/plugin-vue";
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver, VantResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite'
 // import mkcert from "vite-plugin-mkcert";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+      imports: ["vue", "vue-router"], // 自动导入
+      //这个一定要配置，会多出一个auto-import.d.ts文件，
+      dts: 'src/auto-import.d.ts'
+    }),
+    Components({
+      dts: 'src/components-import.d.ts',
+      dirs: ['src/components'], // 按需加载的文件
+      resolvers: [
+        AntDesignVueResolver(),
+        VantResolver()
+      ]
+    }),
+  ],
   resolve: {
     // 配置路径别名
     alias: {

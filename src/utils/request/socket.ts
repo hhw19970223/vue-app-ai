@@ -5,7 +5,7 @@ import { Socket, io } from 'socket.io-client';
 import { EVENT_MITT, gMitt } from '../event/gMitt';
 import { encrypt } from '../secret/crypto';
 
-gMitt.on(EVENT_MITT.err, (mess) => {});
+// gMitt.on(EVENT_MITT.err, (mess) => {});
 
 export let webSocket: Socket;
 let connecting = false; //与服务端连接状态

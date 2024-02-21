@@ -1,3 +1,15 @@
+export const enum MENU {
+  /** 首  页 */
+  home = 'home',
+}
+
+export const menuList = [
+  {
+      name: "首      页",
+      path: MENU.home,
+  },
+];
+
 /**
  * 时间对应毫秒
  */

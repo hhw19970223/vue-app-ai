@@ -1,6 +1,6 @@
 import axios, {
   AxiosInstance,
-  AxiosRequestHeaders,
+  // AxiosRequestHeaders,
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
@@ -68,8 +68,8 @@ export class HttpClient {
    */
   private _handleRequest() {
     return (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-      const { url } = config;
-      const headers = config.headers || {} as AxiosRequestHeaders;
+      // const { url } = config;
+      // const headers = config.headers || {} as AxiosRequestHeaders;
       return config;
     };
   }
@@ -128,9 +128,10 @@ export function createHttpClient(
 
 export async function commonHandleError(
   error: any,
-  instance: AxiosInstance
+  _instance: AxiosInstance
 ): Promise<any> {
-  const { config, response } = error;
+  // const { config, response } = error;
+  const { response } = error;
   let responseError: ResponseError = response?.data || error;
 
   //默认处理错误401
