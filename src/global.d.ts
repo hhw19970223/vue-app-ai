@@ -1,7 +1,7 @@
 declare global {
 
   interface Window {
-
+    pwaPrompt: () => void;
   }
 
   // 环境配置

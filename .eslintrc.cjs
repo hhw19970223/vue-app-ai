@@ -1,7 +1,7 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
     },
     "parser": '@typescript-eslint/parser',
     "parserOptions": {
@@ -42,6 +42,5 @@ module.exports = {
         "@typescript-eslint/no-explicit-any": ["off"],
         "@typescript-eslint/no-this-alias": 'off',
         "@typescript-eslint/ban-ts-comment": "off",
-        "vue/setup-compiler-macros": true
     }
 }

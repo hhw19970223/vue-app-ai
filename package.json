@@ -39,6 +39,7 @@
     "@types/postcss-pxtorem": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/runtime-dom": "^3.4.19",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^43.0.1",
