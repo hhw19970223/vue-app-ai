@@ -76,8 +76,13 @@ export default defineConfig({
       plugins: [
         tailwindcss, 
         autoprefixer,
-      ]
-    }
+      ],
+    },
+    preprocessorOptions: {
+      less: {
+        additionalData: `@import "./src/style/mixin.less";`
+      },
+    },
   },
 
   optimizeDeps: {},
