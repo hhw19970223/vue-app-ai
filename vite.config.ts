@@ -6,6 +6,8 @@ import { AntDesignVueResolver, VantResolver } from 'unplugin-vue-components/reso
 import AutoImport from 'unplugin-auto-import/vite';
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
+import postCssPxToRem from 'postcss-pxtorem'
+import { unheadVueComposablesImports } from '@unhead/vue'
 // import mkcert from "vite-plugin-mkcert";
 
 // https://vitejs.dev/config/
@@ -14,12 +16,16 @@ export default defineConfig({
     vue(),
     AutoImport({
       include: [
-        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.[tj]sx?$/,
         /\.vue$/,
-        /\.vue\?vue/, // .vue
-        /\.md$/, // .md
+        /\.vue\?vue/,
       ],
-      imports: ["vue", "vue-router"], // 自动导入
+      imports: [
+        "vue", 
+        "vue-router", 
+        "@vueuse/core",
+        unheadVueComposablesImports,
+      ], // 自动导入
       //这个一定要配置，会多出一个auto-import.d.ts文件，
       dts: 'src/auto-import.d.ts'
     }),
@@ -76,6 +82,10 @@ export default defineConfig({
       plugins: [
         tailwindcss, 
         autoprefixer,
+        postCssPxToRem({
+          rootValue:16,
+          propList:['*'],
+        })
       ],
     },
     preprocessorOptions: {

@@ -18,7 +18,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["./src/auto-import.d.ts", "./src/components-import.d.ts"]
+    "types": ["./src/auto-import.d.ts", "./src/components-import.d.ts", "node"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
