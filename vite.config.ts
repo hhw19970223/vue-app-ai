@@ -80,7 +80,7 @@ export default defineConfig({
     },
     preprocessorOptions: {
       less: {
-        additionalData: `@import "./src/style/mixin.less";`
+        additionalData: `@import "./src/styles/mixin.less";`
       },
     },
   },

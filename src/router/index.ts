@@ -7,11 +7,11 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/404',
-    component: () => import('@/pages/404.vue'),
+    component: () => import('@/views/404.vue'),
   },
   {
     path: '/home',
-    component: () => import('@/pages/home.vue'),
+    component: () => import('@/views/home.vue'),
     children: [],
   },
 ];

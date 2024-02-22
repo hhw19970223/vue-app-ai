@@ -6,8 +6,8 @@ import { createPinia } from 'pinia'
 import Layout from '@/layout/index.vue';
 
 // import '@/style/base.less';
-import '@/style/mixin.less';
-import '@/style/theme.css';
+import '@/styles/mixin.less';
+import '@/styles/theme.css';
 
 export const app = createApp(App);
 
