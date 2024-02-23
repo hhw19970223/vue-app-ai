@@ -1,4 +1,5 @@
 <template>
+  <div>123123123</div>
   <PullRefresh :refreshNext="refreshNext" :loadMoreNext="loadMoreNext">
     <template #main>
       <Desktop />
@@ -12,13 +13,18 @@
 
 <script setup lang="ts">
 function refreshNext(onSuccess: (flag: boolean) => void) {
-  console.log('refreshNext')
-  onSuccess(true);
+  console.log('refreshNext');
+  setTimeout(() => {
+    onSuccess(true);
+  }, 2000)
+  
 }
 
 function loadMoreNext(onSuccess: (flag: boolean) => void) {
   console.log('loadMoreNext')
-  onSuccess(false);
+    setTimeout(() => {
+    onSuccess(true);
+  }, 2000)
 }
 </script>
 <style lang="less" scoped>

@@ -1,6 +1,6 @@
 <template>
-  <div class="container-wrapper" @touchstart="startTouch" @touchmove="move" @touchend="endTouch" @mousedown="startTouch"
-    @mousemove="move" @mouseup="endTouch" ref="containerRef">
+  <div class="pull-refresh" @touchstart="startTouch" @touchmove="move" @touchend="endTouch" @mousedown="startTouch"
+    @mousemove="move" @mouseup="endTouch" @mouseleave="endTouch" ref="containerRef">
     <div class="content" ref="contentRef">
       <!-- 下拉显示 -->
       <div class="status" :style="{ 'height': marginTop + 'px' }">
@@ -38,13 +38,13 @@ const props = defineProps({
 let touchStart = 0;
 let distance = 0;
 let timer: NodeJS.Timeout;
-let gesture = 0;
-let marginTop = 104;
-let height = 44;
 
 const loading = ref(0);
+const gesture = ref(0);
 const containerRef = ref<HTMLDivElement>();
 const contentRef = ref<HTMLDivElement>();
+const height = ref(44);
+const marginTop = ref(104);
 
 const msg = computed(() => {
   if (loading.value === BEFORE_LOAD) {
@@ -76,12 +76,12 @@ onUnmounted(() => {
 function initData() {
   const $content = contentRef.value;
   if ($content) {
-    $content.style.marginTop = `${-1 * marginTop}px`
+    $content.style.marginTop = `${-1 * marginTop.value}px`
     $content.style.transition = 'none'
     loading.value = BEFORE_LOAD
     touchStart = 0
     distance = 0
-    gesture = 0
+    gesture.value = 0
   }
 }
 
@@ -99,18 +99,18 @@ function move(e: TouchEvent | MouseEvent) {
   const scrollTop = $container!.scrollTop;
   const clientHeight = $container!.clientHeight;
   const scrollHeight = $container!.scrollHeight;
-  if (scrollTop === 0 && loading.value !== 2 && diff > 0 && props.refreshNext) { // 页面没有下滑 并且数据没有更新 并且是下拉
+  if (scrollTop === 0 && loading.value !== LOADING && diff > 0 && props.refreshNext) { // 页面没有下滑 并且数据没有更新 并且是下拉
     distance = diff;
-    gesture = 1;
-    if (distance < marginTop && $content) {
-      $content.style.marginTop = `${distance - marginTop}px`;
-      if (distance >= height) {
+    gesture.value = 1;
+    if (distance < marginTop.value && $content) {
+      $content.style.marginTop = `${distance - marginTop.value}px`;
+      if (distance >= height.value) {
         loading.value = PULLING;
       }
     }
-  } else if (scrollTop + clientHeight === scrollHeight && loading.value !== 2 && diff < 0 && props.loadMoreNext) { // 上拉 // 除法有误差，设置误差范围0.4rem
+  } else if (scrollTop + clientHeight === scrollHeight && loading.value !== LOADING && diff < 0 && props.loadMoreNext) { // 上拉 // 除法有误差，设置误差范围0.4rem
     // 上拉加载
-    gesture = 2;
+    gesture.value = 2;
     loading.value = PULLING;
   }
 }
@@ -120,10 +120,10 @@ function endTouch() {
   if (loading.value === 1) {
     loading.value = LOADING // 加载中
     // 根据手势判断上拉还是下拉
-    if (gesture === 1 && props.refreshNext) {
+    if (gesture.value === 1 && props.refreshNext) {
       const $content = contentRef.value;
       if ($content) {
-        $content.style.marginTop = `${-1 * marginTop + height}px`
+        $content.style.marginTop = `${-1 * marginTop.value + height.value}px`
         props.refreshNext((flag: boolean) => {
           if (flag) {
             loading.value = REFRESH_SUCCESS
@@ -137,7 +137,7 @@ function endTouch() {
         })
       }
 
-    } else if (gesture === 2 && props.loadMoreNext) {
+    } else if (gesture.value === 2 && props.loadMoreNext) {
       props.loadMoreNext((flag) => {
         if (flag) {
           loading.value = REFRESH_SUCCESS
@@ -151,7 +151,7 @@ function endTouch() {
       })
     }
   } else {
-    if (gesture === 1) {
+    if (gesture.value === 1) {
       backToTop(0)
     }
   }
@@ -163,7 +163,7 @@ function backToTop(duration: number) {
   }
   const $content = contentRef.value;
   if ($content) {
-    $content.style.marginTop = `${-1 * marginTop}px`
+    $content.style.marginTop = `${-1 * marginTop.value}px`
     $content.style.transition = 'margin-top .2s .8s ease-in'
     timer = setTimeout(function () {
       initData()
@@ -174,9 +174,11 @@ function backToTop(duration: number) {
 
 </script>
 <style lang="less" scoped>
-.container-wrapper {
+.pull-refresh {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; // 解决h5苹果ios系统中overflow: auto滑动不流畅
+  cursor: pointer;
+  user-select: none;
 
   .content {
     .status {
@@ -197,9 +199,9 @@ function backToTop(duration: number) {
           height: 20px;
           width: 20px;
 
-          // animation: rotate .75s linear infinite;
+          animation: rotate .75s linear infinite;
           &.stop {
-            // animation: none;
+            animation: none;
           }
         }
       }
