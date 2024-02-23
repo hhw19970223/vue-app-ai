@@ -6,14 +6,16 @@ import { AntDesignVueResolver, VantResolver } from 'unplugin-vue-components/reso
 import AutoImport from 'unplugin-auto-import/vite';
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
-import postCssPxToRem from 'postcss-pxtorem'
-import { unheadVueComposablesImports } from '@unhead/vue'
+import postCssPxToRem from 'postcss-pxtorem';
+import svgLoader from 'vite-svg-loader'
+import { unheadVueComposablesImports } from '@unhead/vue';
 // import mkcert from "vite-plugin-mkcert";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    svgLoader(),
     AutoImport({
       include: [
         /\.[tj]sx?$/,

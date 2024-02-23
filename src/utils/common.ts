@@ -42,7 +42,7 @@ export function getPlatform() {
  * 判断是否是移动端
  * @returns
  */
-export function isMobile() {
+export function isMobile(): boolean {
   const flag =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
@@ -51,7 +51,7 @@ export function isMobile() {
     navigator.maxTouchPoints &&
     navigator.maxTouchPoints > 2 &&
     /MacIntel/.test(navigator.platform);
-  return flag || isIpadOS;
+  return !!flag || !!isIpadOS;
 }
 
 /**

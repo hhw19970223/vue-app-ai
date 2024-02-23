@@ -5,7 +5,7 @@
       <!-- 下拉显示 -->
       <div class="status" :style="{ 'height': marginTop + 'px' }">
         <div class="msg" :style="{ 'line-height': height + 'px' }">
-          <i class="icon iconfont icon-chongwutubiao16" :class="loading !== 2 ? 'stop' : ''" />
+          <RefreshSvg class="icon" :class="loading !== 2 ? 'stop' : ''"/>
           {{ msg }}
         </div>
       </div>
@@ -14,7 +14,7 @@
       <!-- 上拉显示 -->
       <div class="status" v-show="gesture === 2" :style="{ 'height': height + 'px' }">
         <div class="msg" :style="{ 'line-height': height + 'px' }">
-          <i class="icon iconfont icon-chongwutubiao16" />
+          <RefreshSvg class="icon" :class="loading !== 2 ? 'stop' : ''"/>
           {{ msg }}
         </div>
       </div>
@@ -22,6 +22,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import RefreshSvg from '@/assets/svg/refresh.svg';
 
 const BEFORE_LOAD = 0;
 const PULLING = 1;
@@ -108,7 +109,7 @@ function move(e: TouchEvent | MouseEvent) {
         loading.value = PULLING;
       }
     }
-  } else if (scrollTop + clientHeight === scrollHeight && loading.value !== LOADING && diff < 0 && props.loadMoreNext) { // 上拉 // 除法有误差，设置误差范围0.4rem
+  } else if (scrollTop + clientHeight === scrollHeight && loading.value !== LOADING && diff < -20 && props.loadMoreNext) { // 上拉 // 除法有误差，设置误差范围0.4rem
     // 上拉加载
     gesture.value = 2;
     loading.value = PULLING;
@@ -193,6 +194,11 @@ function backToTop(duration: number) {
         text-align: center;
         color: rgb(99, 99, 99);
 
+        .iconfont {
+          font-size: 20px;
+          cursor: pointer;
+        }
+
         .icon {
           display: inline-block;
           margin-right: 5px;
@@ -201,6 +207,7 @@ function backToTop(duration: number) {
 
           animation: rotate .75s linear infinite;
           &.stop {
+            display: none;
             animation: none;
           }
         }

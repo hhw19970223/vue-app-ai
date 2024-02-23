@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+
 useHead({
   title: 'HC',
   meta: [

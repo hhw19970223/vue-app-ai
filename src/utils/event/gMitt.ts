@@ -5,6 +5,7 @@ export const enum EVENT_MITT {
   err = 'mitt_err',
   success = 'mitt_succes',
   lock = 'mitt_lock',
+  resize = 'mitt_resize',
 }
 
 export const enum LOCK_NAME {
@@ -16,6 +17,7 @@ export type EventMittType = {
   [EVENT_MITT.err]: string,
   [EVENT_MITT.success]: void,
   [EVENT_MITT.lock]: LOCK_NAME,
+  [EVENT_MITT.resize]: void,
 }
 
 /** 全局事件中心 */

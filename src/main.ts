@@ -16,10 +16,12 @@ Vant 中有个别组件是以函数的形式提供的，
 在使用函数组件时，unplugin-vue-components
 无法自动引入对应的样式，因此需要手动引入样式。
 ------------------------------------- */
-import 'vant/es/toast/style'
-import 'vant/es/dialog/style'
-import 'vant/es/notify/style'
-import 'vant/es/image-preview/style'
+import 'vant/es/toast/style';
+import 'vant/es/dialog/style';
+import 'vant/es/notify/style';
+import 'vant/es/image-preview/style';
+
+import 'default-passive-events'//由于 Chrome 想提高浏览器动画渲染帧数，要修改 eventListener 相关接口，出现了遮罩层无法屏蔽滚动动作的情况。
 
 export const app = createApp(App);
 const head = createHead();
