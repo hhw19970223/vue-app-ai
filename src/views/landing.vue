@@ -13,7 +13,7 @@
       :class="isShow ? 'scale-y-100' : 'scale-y-0'"></nav>
     <div class="bg-gray-200">
       <section class="relative z-0 flex min-h-screen overflow-hidden md:snap-proximity md:snap-start bg-bg">
-        <div class="container flex flex-col justify-center px-5 py-5 mx-auto md:px-10 md:py-10">
+        <div class="container flex flex-col justify-center px-5 py-5 mx-auto">
           <div class="gap-8 mx-auto md:grid md:grid-cols-3 md:grid-rows-3">
             <div ref="ref1" data-card="fade-down-right" :class="showInfo.isShow1 ? 'show-animate' : ''"
               class="p-5 mx-auto mb-8 border border-gray-200 shadow-lg rounded-3xl backdrop-blur-2xl md:mb-0 md:h-full md:w-full bg-primary/30 shadow-primary/20 hover:shadow-hover-primary">
@@ -150,7 +150,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref1.value) {
     const $ref = ref1.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow1 = true;
     } else {
       showInfo.isShow1 = false;
@@ -159,7 +159,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref2.value) {
     const $ref = ref2.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow2 = true;
     } else {
       showInfo.isShow2 = false;
@@ -168,7 +168,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref3.value) {
     const $ref = ref3.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow3 = true;
     } else {
       showInfo.isShow3 = false;
@@ -177,7 +177,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref4.value) {
     const $ref = ref4.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow4 = true;
     } else {
       showInfo.isShow4 = false;
@@ -186,7 +186,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref5.value) {
     const $ref = ref5.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow5 = true;
     } else {
       showInfo.isShow5 = false;
@@ -195,7 +195,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref6.value) {
     const $ref = ref6.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow6 = true;
     } else {
       showInfo.isShow6 = false;
@@ -204,7 +204,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref7.value) {
     const $ref = ref7.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow7 = true;
     } else {
       showInfo.isShow7 = false;
@@ -213,7 +213,7 @@ function onSrcoll(_scrollTop?: number) {
 
   if (ref8.value) {
     const $ref = ref8.value as HTMLElement;
-    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height) {
+    if ($ref.offsetTop - scrollTop + Math.ceil($ref.offsetHeight / 2) < height && scrollTop < $ref.offsetTop + Math.ceil($ref.offsetHeight * 0.5)) {
       showInfo.isShow8 = true;
     } else {
       showInfo.isShow8 = false;
