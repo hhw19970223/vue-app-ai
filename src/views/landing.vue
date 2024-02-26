@@ -10,7 +10,9 @@
     </div>
     <nav
       class="flex flex-1 fixed -top-2 z-40 mx-auto w-full max-w-full origin-top items-start justify-start overflow-y-auto rounded-xl bg-white px-0 py-2 shadow-2xl transition-all duration-500 max-h-max h-[90vh] opacity-100"
-      :class="isShow ? 'scale-y-100' : 'scale-y-0'"></nav>
+      :class="isShow ? 'scale-y-100' : 'scale-y-0'">
+      
+    </nav>
     <div class="bg-gray-200">
       <section class="relative z-0 flex min-h-screen overflow-hidden md:snap-proximity md:snap-start bg-bg">
         <div class="container flex flex-col justify-center px-5 py-5 mx-auto">
@@ -232,7 +234,7 @@ function onSrcoll(_scrollTop?: number) {
 
 [data-card^=fade].show-animate {
   opacity: 1;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
 }
 
 [data-card=fade-down-right] {
