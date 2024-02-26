@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         primary: '#1baeae',
         secondary: '#D07662',
+        cancel: 'rgba(229, 66, 10, 1)',
       },
       boxShadow: {
         '3xl': '30px -30px var(--tw-shadow-colored) !important',

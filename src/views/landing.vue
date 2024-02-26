@@ -3,13 +3,13 @@
     <div @click="show"
       class="fixed z-50 inline-block px-4 py-4 bg-white rounded-lg cursor-pointer right-4 top-4 opacity-90 hover:shadow-hover-1 md:scale-125 md:right-6 md:top-6">
       <div class="h-1 mb-2 transition-all ease-in-out transform duration-400 w-9 bg-secondary"
-        :class="isShow ? 'translate-y-3 rotate-[-45deg]' : ''"></div>
+        :class="isShow ? 'translate-y-3 rotate-[-45deg] bg-cancel' : ''"></div>
       <div class="h-1 mb-2 transition-all ease-in-out bg-black duration-400 w-9" :class="isShow ? 'opacity-0' : ''"></div>
       <div class="h-1 transition-all ease-in-out transform duration-400 w-9 bg-primary"
-        :class="isShow ? '-translate-y-3 rotate-45' : ''"></div>
+        :class="isShow ? '-translate-y-3 rotate-45 bg-cancel' : ''"></div>
     </div>
     <nav
-      class="flex flex-1 fixed -top-2 z-40 mx-auto w-full max-w-full origin-top items-start justify-start overflow-y-auto rounded-xl bg-white px-0 py-2 shadow-2xl transition-all duration-500 max-h-max h-[90vh] opacity-100"
+      class="fixed z-40 flex items-start justify-start flex-1 w-full max-w-full px-0 py-2 mx-auto overflow-y-auto transition-all duration-500 origin-top bg-white shadow-2xl opacity-100 -top-2 rounded-xl max-h-max min-h-[15vh]"
       :class="isShow ? 'scale-y-100' : 'scale-y-0'">
       
     </nav>
